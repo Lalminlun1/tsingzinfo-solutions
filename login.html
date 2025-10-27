@@ -319,10 +319,10 @@
                     localStorage.setItem('userEmail', email);
                 }
                 
-                // Redirect to dashboard (create this page next)
-                setTimeout(() => {
-                    window.location.href = 'dashboard.html';
-                }, 1500);
+                // Redirect to home page
+setTimeout(() => {
+    window.location.href = 'index.html';
+}, 1500);
             } else {
                 // Failed login
                 showNotification('Invalid email or password. Please try again.', 'error');
@@ -393,4 +393,5 @@
         }
     </script>
 </body>
+
 </html>

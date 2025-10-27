@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Client Dashboard - Tsingz Solutions</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        .dashboard-container {
+            min-height: 100vh;
+            background: #f8fafc;
+            padding-top: 100px;
+        }
+
+        .dashboard-header {
+            background: white;
+            padding: 30px 0;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            margin-bottom: 30px;
+        }
+
+        .dashboard-welcome {
+            text-align: center;
+        }
+
+        .dashboard-welcome h1 {
+            color: var(--primary);
+            margin-bottom: 10px;
+        }
+
+        .dashboard-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+            margin-bottom: 40px;
+        }
+
+        .dashboard-card {
+            background: white;
+            padding: 25px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+            transition: var(--transition);
+        }
+
+        .dashboard-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+        }
+
+        .dashboard-card h3 {
+            color: var(--primary);
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .project-list {
+            list-style: none;
+        }
+
+        .project-list li {
+            padding: 12px 0;
+            border-bottom: 1px solid #eee;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .project-list li:last-child {
+            border-bottom: none;
+        }
+
+        .status {
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 500;
+        }
+
+        .status-completed { background: #dcfce7; color: #166534; }
+        .status-in-progress { background: #fef3c7; color: #92400e; }
+        .status-pending { background: #fee2e2; color: #991b1b; }
+
+        .quick-actions {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+            margin-top: 30px;
+        }
+
+        .action-btn {
+            padding: 10px 20px;
+            background: var(--primary);
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: var(--transition);
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .action-btn:hover {
+            background: var(--primary-dark);
+            transform: translateY(-2px);
+        }
+
+        .logout-btn {
+            background: #ef4444;
+        }
+
+        .logout-btn:hover {
+            background: #dc2626;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <nav class="navbar">
+                <div class="logo">
+                    <h1>Tsingz<span>Solutions</span></h1>
+                </div>
+                <ul class="nav-links">
+                    <li><a href="index.html">Back to Website</a></li>
+                    <li><a href="#" class="btn logout-btn" style="padding: 8px 20px;" onclick="logout()">Logout</a></li>
+                </ul>
+                <div class="hamburger">
+                    <i class="fas fa-bars"></i>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Dashboard Content -->
+    <div class="dashboard-container">
+        <div class="container">
+            <div class="dashboard-header">
+                <div class="dashboard-welcome">
+                    <h1>Welcome to Your Dashboard</h1>
+                    <p>Manage your projects and services with Tsingz Solutions</p>
+                </div>
+            </div>
+
+            <div class="dashboard-grid">
+                <div class="dashboard-card">
+                    <h3><i class="fas fa-tasks"></i> Current Projects</h3>
+                    <ul class="project-list">
+                        <li>
+                            <span>Network Infrastructure Setup</span>
+                            <span class="status status-in-progress">In Progress</span>
+                        </li>
+                        <li>
+                            <span>Website Development</span>
+                            <span class="status status-completed">Completed</span>
+                        </li>
+                        <li>
+                            <span>Cloud Migration</span>
+                            <span class="status status-pending">Pending</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="dashboard-card">
+                    <h3><i class="fas fa-chart-bar"></i> Analytics</h3>
+                    <p>Project Completion: <strong>75%</strong></p>
+                    <p>Active Services: <strong>3</strong></p>
+                    <p>Support Tickets: <strong>2 Open</strong></p>
+                </div>
+
+                <div class="dashboard-card">
+                    <h3><i class="fas fa-bell"></i> Notifications</h3>
+                    <ul class="project-list">
+                        <li>Network setup scheduled for next week</li>
+                        <li>New security update available</li>
+                        <li>Monthly report ready for review</li>
+                    </ul>
+                </div>
+
+                <div class="dashboard-card">
+                    <h3><i class="fas fa-tools"></i> Quick Support</h3>
+                    <p>Need help? Our support team is available 24/7</p>
+                    <div class="quick-actions" style="margin-top: 20px;">
+                        <a href="mailto:support@tsingzsolutions.com" class="action-btn">Email Support</a>
+                        <a href="tel:+919354598668" class="action-btn">Call Support</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="quick-actions">
+                <a href="#" class="action-btn">View All Projects</a>
+                <a href="#" class="action-btn">Download Reports</a>
+                <a href="#" class="action-btn">Request Service</a>
+                <a href="index.html#contact" class="action-btn">Contact Account Manager</a>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function logout() {
+            localStorage.removeItem('rememberMe');
+            localStorage.removeItem('userEmail');
+            alert('Logged out successfully!');
+            window.location.href = 'login.html';
+        }
+
+        // Check if user is logged in
+        if (!localStorage.getItem('userEmail')) {
+            window.location.href = 'login.html';
+        }
+
+        // Update welcome message with user email
+        document.addEventListener('DOMContentLoaded', function() {
+            const userEmail = localStorage.getItem('userEmail');
+            if (userEmail) {
+                const welcomeElement = document.querySelector('.dashboard-welcome h1');
+                welcomeElement.textContent = `Welcome, ${userEmail.split('@')[0]}!`;
+            }
+        });
+    </script>
+</body>
+</html>

@@ -3,86 +3,81 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Client Login - Tsingz Info-Net Solutions</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="css/style.css">
+    <title>Client Portal - Login</title>
     <style>
-        .login-container {
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             min-height: 100vh;
             display: flex;
             align-items: center;
             justify-content: center;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             padding: 20px;
         }
 
-        .login-box {
+        .login-container {
             background: white;
+            border-radius: 12px;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
             padding: 40px;
-            border-radius: 15px;
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
             width: 100%;
-            max-width: 400px;
+            max-width: 450px;
+        }
+
+        .logo {
             text-align: center;
-        }
-
-        .login-logo {
             margin-bottom: 30px;
         }
 
-        .login-logo h1 {
-            font-size: 2rem;
-            color: var(--primary);
-            margin: 0;
+        .logo h1 {
+            color: #333;
+            font-size: 28px;
+            font-weight: 600;
         }
 
-        .login-logo span {
-            color: var(--secondary);
+        .logo p {
+            color: #666;
+            margin-top: 8px;
         }
 
-        .login-header h2 {
-            color: var(--dark);
-            margin-bottom: 10px;
-        }
-
-        .login-header p {
-            color: var(--gray);
-            margin-bottom: 30px;
-        }
-
-        .login-form .form-group {
+        .form-group {
             margin-bottom: 20px;
-            text-align: left;
         }
 
-        .login-form label {
+        label {
             display: block;
             margin-bottom: 8px;
+            color: #333;
             font-weight: 500;
-            color: var(--dark);
         }
 
-        .login-form .form-control {
+        input[type="email"],
+        input[type="password"] {
             width: 100%;
-            padding: 12px 15px;
-            border: 2px solid #e2e8f0;
+            padding: 12px 16px;
+            border: 2px solid #e1e5e9;
             border-radius: 8px;
-            font-size: 1rem;
-            transition: var(--transition);
+            font-size: 16px;
+            transition: border-color 0.3s;
         }
 
-        .login-form .form-control:focus {
-            border-color: var(--primary);
+        input[type="email"]:focus,
+        input[type="password"]:focus {
             outline: none;
-            box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+            border-color: #667eea;
         }
 
-        .remember-forgot {
+        .options {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            margin-bottom: 20px;
+            margin-bottom: 25px;
         }
 
         .remember-me {
@@ -92,98 +87,89 @@
         }
 
         .forgot-password {
-            color: var(--primary);
+            color: #667eea;
             text-decoration: none;
-            font-size: 0.9rem;
+            font-size: 14px;
         }
 
         .forgot-password:hover {
             text-decoration: underline;
         }
 
-        .login-btn {
+        .btn {
             width: 100%;
             padding: 12px;
-            background: var(--primary);
-            color: white;
             border: none;
             border-radius: 8px;
-            font-size: 1rem;
-            font-weight: 500;
+            font-size: 16px;
+            font-weight: 600;
             cursor: pointer;
-            transition: var(--transition);
+            transition: background-color 0.3s;
         }
 
-        .login-btn:hover {
-            background: var(--primary-dark);
-            transform: translateY(-2px);
+        .btn-primary {
+            background: #667eea;
+            color: white;
         }
 
-        .login-btn:disabled {
-            background: var(--gray);
-            cursor: not-allowed;
-            transform: none;
+        .btn-primary:hover {
+            background: #5a6fd8;
         }
 
-        .login-divider {
-            margin: 30px 0;
-            position: relative;
+        .divider {
             text-align: center;
+            margin: 25px 0;
+            color: #666;
+            position: relative;
         }
 
-        .login-divider::before {
-            content: '';
+        .divider::before {
+            content: "";
             position: absolute;
             top: 50%;
             left: 0;
             right: 0;
             height: 1px;
-            background: #e2e8f0;
+            background: #e1e5e9;
         }
 
-        .login-divider span {
+        .divider span {
             background: white;
             padding: 0 15px;
-            color: var(--gray);
-            font-size: 0.9rem;
         }
 
         .social-login {
             display: flex;
-            gap: 15px;
+            gap: 12px;
             margin-bottom: 25px;
         }
 
         .social-btn {
             flex: 1;
-            padding: 10px;
-            border: 2px solid #e2e8f0;
+            padding: 12px;
+            border: 2px solid #e1e5e9;
             border-radius: 8px;
             background: white;
             cursor: pointer;
-            transition: var(--transition);
             display: flex;
             align-items: center;
             justify-content: center;
             gap: 8px;
+            font-weight: 500;
+            transition: border-color 0.3s;
         }
 
-        .social-btn.google { color: #db4437; }
-        .social-btn.github { color: #333; }
-        .social-btn.microsoft { color: #0078d4; }
-
         .social-btn:hover {
-            border-color: var(--primary);
-            transform: translateY(-2px);
+            border-color: #667eea;
         }
 
         .signup-link {
-            color: var(--gray);
-            font-size: 0.9rem;
+            text-align: center;
+            color: #666;
         }
 
         .signup-link a {
-            color: var(--primary);
+            color: #667eea;
             text-decoration: none;
             font-weight: 500;
         }
@@ -194,376 +180,203 @@
 
         .demo-accounts {
             margin-top: 25px;
-            padding: 15px;
-            background: #f8fafc;
+            padding: 20px;
+            background: #f8f9fa;
             border-radius: 8px;
-            font-size: 0.8rem;
-            color: var(--gray);
+            font-size: 14px;
         }
 
-        .demo-accounts h4 {
+        .demo-accounts h3 {
             margin-bottom: 10px;
-            color: var(--dark);
+            color: #333;
         }
 
         .demo-account {
-            display: flex;
-            justify-content: space-between;
-            margin-bottom: 5px;
+            margin-bottom: 8px;
         }
 
-        .security-note {
-            font-size: 0.7rem;
-            margin-top: 10px;
-            color: #6b7280;
-            font-style: italic;
+        .error-message {
+            color: #e74c3c;
+            font-size: 14px;
+            margin-top: 5px;
+            display: none;
         }
 
-        @media (max-width: 480px) {
-            .login-box {
-                padding: 30px 20px;
-            }
-            
-            .remember-forgot {
-                flex-direction: column;
-                gap: 10px;
-                align-items: flex-start;
-            }
-            
-            .social-login {
-                flex-direction: column;
-            }
+        .success-message {
+            color: #27ae60;
+            font-size: 14px;
+            margin-top: 5px;
+            display: none;
         }
     </style>
 </head>
 <body>
     <div class="login-container">
-        <div class="login-box">
-            <div class="login-logo">
-                <h1>Tsingz<span>Solutions</span></h1>
+        <div class="logo">
+            <h1>Client Portal</h1>
+            <p>Access your projects and services</p>
+        </div>
+
+        <form id="loginForm">
+            <div class="form-group">
+                <label for="email">Email Address</label>
+                <input type="email" id="email" name="email" placeholder="client@demo.com" required>
+                <div class="error-message" id="emailError"></div>
             </div>
+
+            <div class="form-group">
+                <label for="password">Password</label>
+                <input type="password" id="password" name="password" placeholder="Enter your password" required>
+                <div class="error-message" id="passwordError"></div>
+            </div>
+
+            <div class="options">
+                <div class="remember-me">
+                    <input type="checkbox" id="remember" name="remember">
+                    <label for="remember">Remember me</label>
+                </div>
+                <a href="#" class="forgot-password">Forgot password?</a>
+            </div>
+
+            <button type="submit" class="btn btn-primary">Sign In</button>
             
-            <div class="login-header">
-                <h2>Client Portal</h2>
-                <p>Access your projects and services</p>
+            <div class="success-message" id="successMessage"></div>
+        </form>
+
+        <div class="divider">
+            <span>Or continue with</span>
+        </div>
+
+        <div class="social-login">
+            <button class="social-btn" id="googleLogin">
+                <svg width="18" height="18" viewBox="0 0 24 24">
+                    <path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/>
+                    <path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/>
+                    <path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z"/>
+                    <path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/>
+                </svg>
+                Google
+            </button>
+            <button class="social-btn" id="githubLogin">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+                </svg>
+                GitHub
+            </button>
+            <button class="social-btn" id="microsoftLogin">
+                <svg width="18" height="18" viewBox="0 0 24 24">
+                    <path fill="#f25022" d="M1 1h10v10H1z"/>
+                    <path fill="#00a4ef" d="M1 13h10v10H1z"/>
+                    <path fill="#7fba00" d="M13 1h10v10H13z"/>
+                    <path fill="#ffb900" d="M13 13h10v10H13z"/>
+                </svg>
+                Microsoft
+            </button>
+        </div>
+
+        <div class="signup-link">
+            Don't have an account? <a href="#" id="contactLink">Contact us to get started</a>
+        </div>
+
+        <div class="demo-accounts">
+            <h3>Demo Accounts (for testing):</h3>
+            <div class="demo-account">
+                <strong>Client:</strong> client@demo.com / Tsingz@Client2024
             </div>
-
-            <form class="login-form" id="loginForm">
-                <div class="form-group">
-                    <label for="email">Email Address</label>
-                    <input type="email" id="email" class="form-control" placeholder="your@email.com" required>
-                </div>
-
-                <div class="form-group">
-                    <label for="password">Password</label>
-                    <input type="password" id="password" class="form-control" placeholder="Enter your password" required>
-                </div>
-
-                <div class="remember-forgot">
-                    <div class="remember-me">
-                        <input type="checkbox" id="remember">
-                        <label for="remember">Remember me</label>
-                    </div>
-                    <a href="#" class="forgot-password">Forgot password?</a>
-                </div>
-
-                <button type="submit" class="login-btn" id="loginButton">Sign In</button>
-            </form>
-
-            <div class="login-divider">
-                <span>Or continue with</span>
-            </div>
-
-            <div class="social-login">
-                <button class="social-btn google">
-                    <i class="fab fa-google"></i>
-                    <span>Google</span>
-                </button>
-                <button class="social-btn github">
-                    <i class="fab fa-github"></i>
-                    <span>GitHub</span>
-                </button>
-                <button class="social-btn microsoft">
-                    <i class="fab fa-microsoft"></i>
-                    <span>Microsoft</span>
-                </button>
-            </div>
-
-            <div class="signup-link">
-                Don't have an account? <a href="index.html#contact">Contact us to get started</a>
-            </div>
-
-            <!-- Demo accounts for testing -->
-            <div class="demo-accounts">
-                <h4>Demo Accounts (for testing):</h4>
-                <div class="demo-account">
-                    <span>Client: client@demo.com</span>
-                    <span>Password: Ts1ngz@Client2024</span>
-                </div>
-                <div class="demo-account">
-                    <span>Admin: admin@demo.com</span>
-                    <span>Password: Adm1n@Tsingz2024</span>
-                </div>
-                <p class="security-note">
-                    <i class="fas fa-shield-alt"></i> Passwords are securely hashed
-                </p>
+            <div class="demo-account">
+                <strong>Admin:</strong> admin@demo.com / Admin@Tsingz2024
             </div>
         </div>
     </div>
 
     <script>
-        // Security variables
-        let loginAttempts = 0;
-        const maxAttempts = 5;
-        const lockoutTime = 15 * 60 * 1000; // 15 minutes
-
-        // Secure demo accounts with SHA-256 hashed passwords
-        const demoAccounts = {
-            'client@demo.com': 'b03ddf3ca2e714a6548e7495e2a03f5e824eaac9837cd7f159c67b90fb4b7342', // Ts1ngz@Client2024
-            'admin@demo.com': '8c6976e5b5410415bde908bd4dee15dfb167a9c873fc4bb8a81f6f2ab448a918'  // Adm1n@Tsingz2024
+        // Demo account data
+        const validUsers = {
+            'client@demo.com': 'Tsingz@Client2024',
+            'admin@demo.com': 'Admin@Tsingz2024'
         };
 
-        // Password hashing function
-        async function hashPassword(password) {
-            const encoder = new TextEncoder();
-            const data = encoder.encode(password);
-            const hash = await crypto.subtle.digest('SHA-256', data);
-            return Array.from(new Uint8Array(hash))
-                .map(b => b.toString(16).padStart(2, '0'))
-                .join('');
-        }
-
-        // Input sanitization
-        function sanitizeInput(input) {
-            return input.trim().toLowerCase();
-        }
-
-        // Check if user is locked out
-        function checkLockout() {
-            const lockoutUntil = localStorage.getItem('lockoutUntil');
-            if (lockoutUntil && Date.now() < parseInt(lockoutUntil)) {
-                const remainingTime = Math.ceil((parseInt(lockoutUntil) - Date.now()) / 60000);
-                showNotification(`Account temporarily locked. Try again in ${remainingTime} minutes.`, 'error');
-                disableLogin();
-                return true;
-            }
-            return false;
-        }
-
-        // Disable login form
-        function disableLogin() {
-            document.getElementById('loginButton').disabled = true;
-            document.getElementById('loginButton').textContent = 'Login Disabled';
-        }
-
-        // Enable login form
-        function enableLogin() {
-            document.getElementById('loginButton').disabled = false;
-            document.getElementById('loginButton').textContent = 'Sign In';
-        }
-
-        // Login form handler
-        document.getElementById('loginForm').addEventListener('submit', async function(e) {
+        // Form submission
+        document.getElementById('loginForm').addEventListener('submit', function(e) {
             e.preventDefault();
             
-            let email = document.getElementById('email').value;
-            let password = document.getElementById('password').value;
-            const remember = document.getElementById('remember').checked;
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+            const emailError = document.getElementById('emailError');
+            const passwordError = document.getElementById('passwordError');
+            const successMessage = document.getElementById('successMessage');
 
-            // Check lockout status
-            if (checkLockout()) {
-                return;
+            // Reset messages
+            emailError.style.display = 'none';
+            passwordError.style.display = 'none';
+            successMessage.style.display = 'none';
+
+            let isValid = true;
+
+            // Email validation
+            if (!email || !validUsers[email]) {
+                emailError.textContent = 'Invalid email address';
+                emailError.style.display = 'block';
+                isValid = false;
             }
 
-            // Sanitize inputs
-            email = sanitizeInput(email);
-            password = sanitizeInput(password);
-
-            // Validate inputs
-            if (!email || !password) {
-                showNotification('Please fill in all fields.', 'error');
-                return;
+            // Password validation
+            if (!password || validUsers[email] !== password) {
+                passwordError.textContent = 'Invalid password';
+                passwordError.style.display = 'block';
+                isValid = false;
             }
 
-            // Rate limiting
-            loginAttempts++;
-            if (loginAttempts >= maxAttempts) {
-                const lockoutUntil = Date.now() + lockoutTime;
-                localStorage.setItem('lockoutUntil', lockoutUntil.toString());
-                showNotification('Too many failed attempts. Account locked for 15 minutes.', 'error');
-                disableLogin();
-                setTimeout(enableLogin, lockoutTime);
-                return;
-            }
-
-            try {
-                // Hash the entered password
-                const hashedPassword = await hashPassword(password);
+            if (isValid) {
+                successMessage.textContent = `Login successful! Welcome ${email}`;
+                successMessage.style.display = 'block';
                 
-                // Check credentials
-                if (demoAccounts[email] && demoAccounts[email] === hashedPassword) {
-                    // Successful login
-                    loginAttempts = 0; // Reset attempts
-                    localStorage.removeItem('lockoutUntil'); // Clear lockout
-                    showNotification('Login successful! Redirecting...', 'success');
-                    
-                    // Store login state
-                    if (remember) {
-                        localStorage.setItem('rememberMe', 'true');
-                        localStorage.setItem('userEmail', email);
-                    }
-                    
-                    // Set session timeout (30 minutes)
-                    localStorage.setItem('loginTime', Date.now().toString());
-                    
-                    // Redirect to home page
-                    setTimeout(() => {
-                        window.location.href = 'index.html';
-                    }, 1500);
-                } else {
-                    // Failed login
-                    showNotification('Invalid email or password. Please try again.', 'error');
-                    
-                    // Clear password field
-                    document.getElementById('password').value = '';
-                }
-            } catch (error) {
-                console.error('Login error:', error);
-                showNotification('An error occurred during login. Please try again.', 'error');
+                // Simulate redirect after successful login
+                setTimeout(() => {
+                    alert(`Redirecting to dashboard... Logged in as: ${email}`);
+                    // In real app: window.location.href = '/dashboard';
+                }, 1000);
             }
         });
 
-        // Check session timeout
-        function checkSession() {
-            const loginTime = localStorage.getItem('loginTime');
-            if (loginTime) {
-                const sessionDuration = 30 * 60 * 1000; // 30 minutes
-                if (Date.now() - parseInt(loginTime) > sessionDuration) {
-                    localStorage.removeItem('userEmail');
-                    localStorage.removeItem('loginTime');
-                    showNotification('Session expired. Please login again.', 'info');
-                }
-            }
+        // Social login handlers
+        document.getElementById('googleLogin').addEventListener('click', function() {
+            // In production, this would redirect to Google OAuth
+            simulateSocialLogin('Google');
+        });
+
+        document.getElementById('githubLogin').addEventListener('click', function() {
+            simulateSocialLogin('GitHub');
+        });
+
+        document.getElementById('microsoftLogin').addEventListener('click', function() {
+            simulateSocialLogin('Microsoft');
+        });
+
+        function simulateSocialLogin(provider) {
+            const successMessage = document.getElementById('successMessage');
+            successMessage.textContent = `${provider} authentication successful! Redirecting...`;
+            successMessage.style.color = '#27ae60';
+            successMessage.style.display = 'block';
+
+            setTimeout(() => {
+                alert(`Successfully logged in with ${provider}!`);
+                // In real app: window.location.href = '/dashboard';
+            }, 1500);
         }
 
-        // Initialize page
-        document.addEventListener('DOMContentLoaded', function() {
-            // Check remember me
-            if (localStorage.getItem('rememberMe') === 'true') {
-                const savedEmail = localStorage.getItem('userEmail');
-                if (savedEmail) {
-                    document.getElementById('email').value = savedEmail;
-                    document.getElementById('remember').checked = true;
-                }
-            }
-
-            // Check lockout status
-            checkLockout();
-
-            // Check session
-            checkSession();
-
-            // Auto-check session every minute
-            setInterval(checkSession, 60000);
-        });
-
-        // Social login buttons
-        document.querySelectorAll('.social-btn').forEach(btn => {
-            btn.addEventListener('click', function() {
-                const provider = this.querySelector('span').textContent;
-                showNotification(`${provider} authentication would be implemented in production`, 'info');
-            });
+        // Contact link
+        document.getElementById('contactLink').addEventListener('click', function(e) {
+            e.preventDefault();
+            alert('Please contact support@company.com to get started with your account.');
         });
 
         // Forgot password
         document.querySelector('.forgot-password').addEventListener('click', function(e) {
             e.preventDefault();
-            const email = prompt('Please enter your email address for password reset:');
-            if (email) {
-                // Basic email validation
-                const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-                if (emailRegex.test(email)) {
-                    showNotification(`Password reset instructions sent to ${email}`, 'success');
-                } else {
-                    showNotification('Please enter a valid email address', 'error');
-                }
-            }
+            const email = document.getElementById('email').value || 'your email';
+            alert(`Password reset link would be sent to: ${email}`);
         });
-
-        // Notification function
-        function showNotification(message, type = 'info') {
-            // Remove existing notifications
-            const existing = document.querySelector('.notification');
-            if (existing) existing.remove();
-
-            const notification = document.createElement('div');
-            notification.className = `notification ${type}`;
-            notification.innerHTML = `
-                <span>${message}</span>
-                <button onclick="this.parentElement.remove()">&times;</button>
-            `;
-            
-            // Style based on type
-            const colors = {
-                success: '#10b981',
-                error: '#ef4444',
-                info: '#3b82f6',
-                warning: '#f59e0b'
-            };
-            
-            notification.style.cssText = `
-                position: fixed;
-                top: 20px;
-                right: 20px;
-                background: ${colors[type] || colors.info};
-                color: white;
-                padding: 15px 20px;
-                border-radius: 5px;
-                box-shadow: 0 5px 15px rgba(0,0,0,0.2);
-                z-index: 10000;
-                display: flex;
-                align-items: center;
-                gap: 10px;
-                max-width: 400px;
-                animation: slideInRight 0.3s ease;
-            `;
-            
-            // Add animation keyframes if not exists
-            if (!document.querySelector('#notification-styles')) {
-                const style = document.createElement('style');
-                style.id = 'notification-styles';
-                style.textContent = `
-                    @keyframes slideInRight {
-                        from {
-                            transform: translateX(100%);
-                            opacity: 0;
-                        }
-                        to {
-                            transform: translateX(0);
-                            opacity: 1;
-                        }
-                    }
-                `;
-                document.head.appendChild(style);
-            }
-            
-            document.body.appendChild(notification);
-            
-            // Auto remove after 5 seconds
-            setTimeout(() => {
-                if (notification.parentElement) {
-                    notification.style.animation = 'slideInRight 0.3s ease reverse';
-                    setTimeout(() => {
-                        if (notification.parentElement) {
-                            notification.remove();
-                        }
-                    }, 300);
-                }
-            }, 5000);
-        }
-
-        // Make function globally available for notification close buttons
-        window.showNotification = showNotification;
     </script>
 </body>
 </html>
